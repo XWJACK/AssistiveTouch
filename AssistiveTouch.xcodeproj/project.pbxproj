@@ -8,12 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		04CF61E51F0A09740068FB67 /* AssistiveTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = 04CF61E31F0A09740068FB67 /* AssistiveTouch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04CF61E81F0A0AFD0068FB67 /* AssistiveTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61E71F0A0AFD0068FB67 /* AssistiveTouch.swift */; };
+		04CF61EA1F0A0D930068FB67 /* AssistiveTouchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61E91F0A0D930068FB67 /* AssistiveTouchItem.swift */; };
+		04CF61EC1F0A10600068FB67 /* AssistiveTouchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61EB1F0A10600068FB67 /* AssistiveTouchSection.swift */; };
+		04CF61F01F0A12DA0068FB67 /* AssistiveTouchIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61EF1F0A12DA0068FB67 /* AssistiveTouchIcon.swift */; };
+		04CF61F21F0A177B0068FB67 /* AssistiveTouchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61F11F0A177B0068FB67 /* AssistiveTouchViewController.swift */; };
+		04CF61F41F0A1B0F0068FB67 /* AssistiveTouchLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61F31F0A1B0F0068FB67 /* AssistiveTouchLayout.swift */; };
+		04CF61F71F0A26A20068FB67 /* AssistiveTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61F61F0A26A20068FB67 /* AssistiveTouchView.swift */; };
+		04CF61FB1F0A31300068FB67 /* AssistiveTouchSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61FA1F0A31300068FB67 /* AssistiveTouchSectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04CF61D31F0A08410068FB67 /* AssistiveTouch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AssistiveTouch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CF61E31F0A09740068FB67 /* AssistiveTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssistiveTouch.h; path = Sources/AssistiveTouch.h; sourceTree = SOURCE_ROOT; };
 		04CF61E41F0A09740068FB67 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
+		04CF61E71F0A0AFD0068FB67 /* AssistiveTouch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouch.swift; path = Sources/AssistiveTouch.swift; sourceTree = SOURCE_ROOT; };
+		04CF61E91F0A0D930068FB67 /* AssistiveTouchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouchItem.swift; path = Sources/AssistiveTouchItem.swift; sourceTree = SOURCE_ROOT; };
+		04CF61EB1F0A10600068FB67 /* AssistiveTouchSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouchSection.swift; path = Sources/AssistiveTouchSection.swift; sourceTree = SOURCE_ROOT; };
+		04CF61EF1F0A12DA0068FB67 /* AssistiveTouchIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouchIcon.swift; path = Sources/AssistiveTouchIcon.swift; sourceTree = SOURCE_ROOT; };
+		04CF61F11F0A177B0068FB67 /* AssistiveTouchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouchViewController.swift; path = Sources/AssistiveTouchViewController.swift; sourceTree = SOURCE_ROOT; };
+		04CF61F31F0A1B0F0068FB67 /* AssistiveTouchLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouchLayout.swift; path = Sources/AssistiveTouchLayout.swift; sourceTree = SOURCE_ROOT; };
+		04CF61F61F0A26A20068FB67 /* AssistiveTouchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouchView.swift; path = Sources/AssistiveTouchView.swift; sourceTree = SOURCE_ROOT; };
+		04CF61FA1F0A31300068FB67 /* AssistiveTouchSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouchSectionView.swift; path = Sources/AssistiveTouchSectionView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +46,7 @@
 		04CF61C91F0A08410068FB67 = {
 			isa = PBXGroup;
 			children = (
+				04CF61E71F0A0AFD0068FB67 /* AssistiveTouch.swift */,
 				04CF61D51F0A08410068FB67 /* AssistiveTouch */,
 				04CF61D41F0A08410068FB67 /* Products */,
 			);
@@ -46,6 +63,8 @@
 		04CF61D51F0A08410068FB67 /* AssistiveTouch */ = {
 			isa = PBXGroup;
 			children = (
+				04CF61FC1F0A3FC70068FB67 /* Core */,
+				04CF61F51F0A26760068FB67 /* Features */,
 				04CF61E21F0A09500068FB67 /* Supporting Files */,
 			);
 			path = AssistiveTouch;
@@ -58,6 +77,27 @@
 				04CF61E41F0A09740068FB67 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04CF61F51F0A26760068FB67 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				04CF61F61F0A26A20068FB67 /* AssistiveTouchView.swift */,
+				04CF61FA1F0A31300068FB67 /* AssistiveTouchSectionView.swift */,
+				04CF61F11F0A177B0068FB67 /* AssistiveTouchViewController.swift */,
+			);
+			name = Features;
+			sourceTree = "<group>";
+		};
+		04CF61FC1F0A3FC70068FB67 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				04CF61EF1F0A12DA0068FB67 /* AssistiveTouchIcon.swift */,
+				04CF61E91F0A0D930068FB67 /* AssistiveTouchItem.swift */,
+				04CF61EB1F0A10600068FB67 /* AssistiveTouchSection.swift */,
+				04CF61F31F0A1B0F0068FB67 /* AssistiveTouchLayout.swift */,
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -103,6 +143,7 @@
 				TargetAttributes = {
 					04CF61D21F0A08410068FB67 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -139,6 +180,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CF61EA1F0A0D930068FB67 /* AssistiveTouchItem.swift in Sources */,
+				04CF61F41F0A1B0F0068FB67 /* AssistiveTouchLayout.swift in Sources */,
+				04CF61F71F0A26A20068FB67 /* AssistiveTouchView.swift in Sources */,
+				04CF61EC1F0A10600068FB67 /* AssistiveTouchSection.swift in Sources */,
+				04CF61F01F0A12DA0068FB67 /* AssistiveTouchIcon.swift in Sources */,
+				04CF61FB1F0A31300068FB67 /* AssistiveTouchSectionView.swift in Sources */,
+				04CF61E81F0A0AFD0068FB67 /* AssistiveTouch.swift in Sources */,
+				04CF61F21F0A177B0068FB67 /* AssistiveTouchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +298,7 @@
 		04CF61DC1F0A08410068FB67 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -261,6 +311,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xwjack.AssistiveTouch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -268,6 +319,7 @@
 		04CF61DD1F0A08410068FB67 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
