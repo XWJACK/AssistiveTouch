@@ -49,6 +49,14 @@ open class AssistiveTouch {
         
         window.rootViewController = controller
         window.isHidden = true
+    }
+    
+    open func show() {
+        window.isHidden = false
         window.makeKeyAndVisible()
+    }
+    
+    open func hide() {
+        window.isHidden = true
     }
 }
