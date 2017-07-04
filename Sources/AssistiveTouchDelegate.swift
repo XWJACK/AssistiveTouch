@@ -25,15 +25,29 @@ import UIKit
 
 open class AssistiveTouchDelegate: AssistiveTouchViewControllerDelegate {
     
-    open let assistiveTouchPosition: AssistiveTouchPosition = AssistiveTouchPosition()
+    /// Assistive touch position.
+    open let assistiveTouchPosition: AssistiveTouchPosition
     
     open let assistiveTouchView: AssistiveTouchView = AssistiveTouchView()
     
+    open var endPosition: CGPoint = .zero
     open var shrinkSize: CGSize { return CGSize(width: 60, height: 60) }
+    
+    public init(assistiveTouchPosition: AssistiveTouchPosition = AssistiveTouchPosition()) {
+        self.assistiveTouchPosition = assistiveTouchPosition
+    }
     
     open func viewDidLoad(_ controller: AssistiveTouchViewController) {
         controller.contentView.addSubview(assistiveTouchView)
         assistiveTouchView.frame = CGRect(origin: .zero, size: shrinkSize)
+    }
+    
+    open func shrink(_ controller: AssistiveTouchViewController) {
+        
+    }
+    
+    open func spread(_ controller: AssistiveTouchViewController) {
+        
     }
     
     open func assistiveTouch(_ controller: AssistiveTouchViewController, beganDragFromPosition position: CGPoint) {
@@ -46,5 +60,13 @@ open class AssistiveTouchDelegate: AssistiveTouchViewControllerDelegate {
     
     open func assistiveTouch(_ controller: AssistiveTouchViewController, didEndDragToPosition position: CGPoint) {
         controller.contentView.alpha = 0.5
+        endPosition = CGPoint(x: position.x - shrinkSize.width / 2, y: position.y - shrinkSize.height / 2)
+        
+        /// Adsorption to static point.
+        UIView.animate(withDuration: 0.3) {
+            controller.window?.frame.origin = self.assistiveTouchPosition.adsorption(currentFrame: CGRect(origin: self.endPosition,
+                                                                                                          size: controller.contentView.frame.size),
+                                                                                     inSize: UIScreen.main.bounds.size)
+        }
     }
 }

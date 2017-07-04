@@ -23,6 +23,6 @@
 
 import UIKit
 
-class AssistiveTouchSectionView: AssistiveTouchView {
+open class AssistiveTouchSectionView: AssistiveTouchView {
     
 }

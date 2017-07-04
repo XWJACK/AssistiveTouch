@@ -26,6 +26,10 @@ import UIKit
 public protocol AssistiveTouchViewControllerDelegate: class {
     var shrinkSize: CGSize { get }
     func viewDidLoad(_ controller: AssistiveTouchViewController)
+    
+    func shrink(_ controller: AssistiveTouchViewController)
+    func spread(_ controller: AssistiveTouchViewController)
+    
     func assistiveTouch(_ controller: AssistiveTouchViewController, beganDragFromPosition position: CGPoint)
     func assistiveTouch(_ controller: AssistiveTouchViewController, draggingToPosition position: CGPoint)
     func assistiveTouch(_ controller: AssistiveTouchViewController, didEndDragToPosition position: CGPoint)
@@ -65,14 +69,23 @@ open class AssistiveTouchViewController: UIViewController {
         delegate.viewDidLoad(self)
     }
     
+    open func shrink() {
+        status = !status
+        delegate.shrink(self)
+    }
+    
+    open func spread() {
+        status = !status
+        delegate.spread(self)
+    }
+    
     @objc private func tap(_ gesture: UITapGestureRecognizer) {
-        
-//        status = !status
+        status == .shrink ? spread() : shrink()
     }
     
     @objc private func drag(_ gesture: UIPanGestureRecognizer) {
         /// Only useful in shrink status.
-//        guard status == .shrink else { return }
+        guard status == .shrink else { return }
         
         window?.frame = UIScreen.main.bounds
         let position = gesture.location(in: nil)

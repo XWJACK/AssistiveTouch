@@ -24,5 +24,26 @@
 import UIKit
 
 open class AssistiveTouchPosition {
-    
+    open func adsorption(currentFrame current: CGRect, inSize size: CGSize, minX: CGFloat = 2, minY: CGFloat = 2, adsorptionX: CGFloat = 60, adsorptionY: CGFloat = 60) -> CGPoint {
+        
+        var adsorptionPoint: CGPoint = .zero
+        
+        /// Adsorption Y
+        if current.origin.y < minY {
+            adsorptionPoint.y = minY
+        } else if current.origin.y > size.height - current.size.height - minY {
+            adsorptionPoint.y = size.height - current.size.height - minY
+        } else {
+            adsorptionPoint.y = current.origin.y
+        }
+        
+        /// Adsorption X
+        if current.origin.x <= size.width / 2 - current.size.width / 2 {
+            adsorptionPoint.x = minX
+        } else {
+            adsorptionPoint.x = size.width - current.size.width - minX
+        }
+        
+        return adsorptionPoint
+    }
 }

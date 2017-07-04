@@ -31,6 +31,8 @@ open class AssistiveTouchView: UIView {
     public convenience init() {
         self.init(frame: .zero)
         
+        backgroundColor = .clear
+        
         effectiveView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         effectiveView.layer.cornerRadius = 12
         effectiveView.layer.masksToBounds = true
