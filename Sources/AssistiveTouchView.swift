@@ -27,7 +27,6 @@ import UIKit
 open class AssistiveTouchView: UIView {
     
     open let effectiveView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-//    private var section: AssistiveTouchSection
     
     public convenience init() {
         self.init(frame: .zero)

@@ -21,7 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Foundation
+import UIKit
 
 public enum AssistiveTouchStatus {
     case shrink
@@ -40,16 +40,16 @@ open class AssistiveTouch {
     
     open static let `default`: AssistiveTouch = AssistiveTouch()
     
-    open let window: UIWindow = UIWindow(frame: CGRect(origin: .zero, size: CGSize(width: 60, height: 60)))
+    open let window: UIWindow
     open var rootSection: AssistiveTouchSection?
     
-    public init(controller: AssistiveTouchViewController = AssistiveTouchViewController(),
-                delegate: AssistiveTouchDelegate = AssistiveTouchDelegate()) {
+    public init(controller: AssistiveTouchViewController = AssistiveTouchViewController()) {
+        
+        window = UIWindow(frame: CGRect(origin: .zero, size: controller.delegate.shrinkSize))
         window.windowLevel = UIWindowLevelStatusBar + 1
         window.rootViewController = controller
         
         controller.window = window
-        controller.delegate = delegate
     }
     
     open func show() {

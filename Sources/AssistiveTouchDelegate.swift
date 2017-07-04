@@ -26,23 +26,25 @@ import UIKit
 open class AssistiveTouchDelegate: AssistiveTouchViewControllerDelegate {
     
     open let assistiveTouchPosition: AssistiveTouchPosition = AssistiveTouchPosition()
+    
     open let assistiveTouchView: AssistiveTouchView = AssistiveTouchView()
     
-    public func viewDidLoad(_ controller: AssistiveTouchViewController) {
-        controller.view.addSubview(assistiveTouchView)
-        assistiveTouchView.frame = CGRect(origin: .zero, size: CGSize(width: 60, height: 60))
+    open var shrinkSize: CGSize { return CGSize(width: 60, height: 60) }
+    
+    open func viewDidLoad(_ controller: AssistiveTouchViewController) {
+        controller.contentView.addSubview(assistiveTouchView)
+        assistiveTouchView.frame = CGRect(origin: .zero, size: shrinkSize)
     }
     
     open func assistiveTouch(_ controller: AssistiveTouchViewController, beganDragFromPosition position: CGPoint) {
-        assistiveTouchView.alpha = 1
+        controller.contentView.alpha = 1
     }
     
     open func assistiveTouch(_ controller: AssistiveTouchViewController, draggingToPosition position: CGPoint) {
-        assistiveTouchView.center = position
+        
     }
     
     open func assistiveTouch(_ controller: AssistiveTouchViewController, didEndDragToPosition position: CGPoint) {
-        assistiveTouchView.frame.origin = .zero
-        assistiveTouchView.alpha = 0.5
+        controller.contentView.alpha = 0.5
     }
 }
