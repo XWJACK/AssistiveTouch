@@ -33,7 +33,7 @@ open class AssistiveTouchSection {
     open let layout: AssistiveTouchLayout
     
     /// All sub items except backItem.
-    private var items: [AssistiveTouchItem] = []
+    open private(set) var items: [AssistiveTouchItem] = []
     
     public init(backItem: AssistiveTouchItem? = nil,
                 items: [AssistiveTouchItem],
@@ -42,13 +42,4 @@ open class AssistiveTouchSection {
         self.items = items
         self.layout = layout == nil ? AssistiveTouchLayout(items.count) : layout!
     }
-    
-//    open func push(_ section: AssistiveTouchSection) {
-//        next = section
-//    }
-//    
-//    @discardableResult
-//    open func pop() -> AssistiveTouchSection {
-//        return self
-//    }
 }

@@ -36,9 +36,9 @@ import Foundation
 open class AssistiveTouchLayout {
     
     public var layoutSize: CGSize = CGSize(width: 300, height: 300)
-    private let number: Int
+    open let numberOfItems: Int
     
-    public init(_ number: Int) {
-        self.number = number
+    public init(_ numberOfItems: Int) {
+        self.numberOfItems = numberOfItems
     }
 }

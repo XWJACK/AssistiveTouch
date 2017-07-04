@@ -16,6 +16,8 @@
 		04CF61F41F0A1B0F0068FB67 /* AssistiveTouchLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61F31F0A1B0F0068FB67 /* AssistiveTouchLayout.swift */; };
 		04CF61F71F0A26A20068FB67 /* AssistiveTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61F61F0A26A20068FB67 /* AssistiveTouchView.swift */; };
 		04CF61FB1F0A31300068FB67 /* AssistiveTouchSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61FA1F0A31300068FB67 /* AssistiveTouchSectionView.swift */; };
+		04CF61FE1F0B38910068FB67 /* AssistiveTouchPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61FD1F0B38910068FB67 /* AssistiveTouchPosition.swift */; };
+		04CF62001F0B480F0068FB67 /* AssistiveTouchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF61FF1F0B480F0068FB67 /* AssistiveTouchDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		04CF61F31F0A1B0F0068FB67 /* AssistiveTouchLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouchLayout.swift; path = Sources/AssistiveTouchLayout.swift; sourceTree = SOURCE_ROOT; };
 		04CF61F61F0A26A20068FB67 /* AssistiveTouchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouchView.swift; path = Sources/AssistiveTouchView.swift; sourceTree = SOURCE_ROOT; };
 		04CF61FA1F0A31300068FB67 /* AssistiveTouchSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouchSectionView.swift; path = Sources/AssistiveTouchSectionView.swift; sourceTree = SOURCE_ROOT; };
+		04CF61FD1F0B38910068FB67 /* AssistiveTouchPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouchPosition.swift; path = Sources/AssistiveTouchPosition.swift; sourceTree = SOURCE_ROOT; };
+		04CF61FF1F0B480F0068FB67 /* AssistiveTouchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistiveTouchDelegate.swift; path = Sources/AssistiveTouchDelegate.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 				04CF61F61F0A26A20068FB67 /* AssistiveTouchView.swift */,
 				04CF61FA1F0A31300068FB67 /* AssistiveTouchSectionView.swift */,
 				04CF61F11F0A177B0068FB67 /* AssistiveTouchViewController.swift */,
+				04CF61FF1F0B480F0068FB67 /* AssistiveTouchDelegate.swift */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 				04CF61E91F0A0D930068FB67 /* AssistiveTouchItem.swift */,
 				04CF61EB1F0A10600068FB67 /* AssistiveTouchSection.swift */,
 				04CF61F31F0A1B0F0068FB67 /* AssistiveTouchLayout.swift */,
+				04CF61FD1F0B38910068FB67 /* AssistiveTouchPosition.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -180,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CF62001F0B480F0068FB67 /* AssistiveTouchDelegate.swift in Sources */,
 				04CF61EA1F0A0D930068FB67 /* AssistiveTouchItem.swift in Sources */,
 				04CF61F41F0A1B0F0068FB67 /* AssistiveTouchLayout.swift in Sources */,
 				04CF61F71F0A26A20068FB67 /* AssistiveTouchView.swift in Sources */,
@@ -188,6 +195,7 @@
 				04CF61FB1F0A31300068FB67 /* AssistiveTouchSectionView.swift in Sources */,
 				04CF61E81F0A0AFD0068FB67 /* AssistiveTouch.swift in Sources */,
 				04CF61F21F0A177B0068FB67 /* AssistiveTouchViewController.swift in Sources */,
+				04CF61FE1F0B38910068FB67 /* AssistiveTouchPosition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

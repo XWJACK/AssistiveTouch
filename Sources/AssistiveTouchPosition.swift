@@ -1,5 +1,5 @@
 //
-//  AssistiveTouchItem.swift
+//  AssistiveTouchPosition.swift
 //
 //  Copyright (c) 2017 Jack
 //
@@ -23,24 +23,6 @@
 
 import UIKit
 
-open class AssistiveTouchItem {
-    open let icon: AssistiveTouchIcon
-    open let title: String
-    open var action: (() -> ())?
-    /// Associate section
-    open let section: AssistiveTouchSection?
-    
-    public init(icon: AssistiveTouchIcon,
-                title: String,
-                action: (() -> ())? = nil,
-                section: AssistiveTouchSection? = nil) {
-        self.icon = icon
-        self.title = title
-        self.section = section
-        self.action = action
-    }
-}
-
-open class AssistiveTouchBackItem: AssistiveTouchItem {
+open class AssistiveTouchPosition {
     
 }

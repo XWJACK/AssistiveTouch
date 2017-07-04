@@ -23,27 +23,52 @@
 
 import UIKit
 
+public protocol AssistiveTouchViewControllerDelegate: class {
+//    func assistiveTouch(_ controller: AssistiveTouchViewController)
+    func assistiveTouch(_ controller: AssistiveTouchViewController, beganDragFromPosition position: CGPoint)
+    func assistiveTouch(_ controller: AssistiveTouchViewController, draggingToPosition position: CGPoint)
+    func assistiveTouch(_ controller: AssistiveTouchViewController, didEndDragToPosition position: CGPoint)
+}
+
+public extension AssistiveTouchViewControllerDelegate {
+    func assistiveTouch(_ controller: AssistiveTouchViewController, beganDragFromPosition position: CGPoint) {}
+    func assistiveTouch(_ controller: AssistiveTouchViewController, draggingToPosition position: CGPoint) {}
+    func assistiveTouch(_ controller: AssistiveTouchViewController, didEndDragToPosition position: CGPoint) {}
+}
+
 open class AssistiveTouchViewController: UIViewController {
+    
+    open private(set) var status: AssistiveTouchStatus = .shrink
+    
+    open weak var delegate: AssistiveTouchViewControllerDelegate? = nil
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        let spreadGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(spread))
-        let shrinkGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(shrink))
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(pan))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(_ :)))
+        let dragGesture = UIPanGestureRecognizer(target: self, action: #selector(drag(_:)))
         
-        
+        view.addGestureRecognizer(tapGesture)
+        view.addGestureRecognizer(dragGesture)
     }
     
-    open func spread() {
+    @objc private func tap(_ gesture: UITapGestureRecognizer) {
         
+        status = !status
     }
     
-    open func shrink() {
+    @objc private func drag(_ gesture: UIPanGestureRecognizer) {
+        /// Only useful in shrink status.
+        guard status == .shrink else { return }
         
-    }
-    
-    open func pan() {
+        let position = gesture.location(in: view)
+        view.center = position
         
+        switch gesture.state {
+        case .began: delegate?.assistiveTouch(self, beganDragFromPosition: position)
+        case .changed: delegate?.assistiveTouch(self, draggingToPosition: position)
+        case .ended, .cancelled, .failed: delegate?.assistiveTouch(self, didEndDragToPosition: position)
+        case .possible: break
+        }
     }
 }

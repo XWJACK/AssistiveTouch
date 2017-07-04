@@ -1,5 +1,5 @@
 //
-//  AssistiveTouchItem.swift
+//  AssistiveTouchDelegate.swift
 //
 //  Copyright (c) 2017 Jack
 //
@@ -23,24 +23,19 @@
 
 import UIKit
 
-open class AssistiveTouchItem {
-    open let icon: AssistiveTouchIcon
-    open let title: String
-    open var action: (() -> ())?
-    /// Associate section
-    open let section: AssistiveTouchSection?
+open class AssistiveTouchDelegate: AssistiveTouchViewControllerDelegate {
     
-    public init(icon: AssistiveTouchIcon,
-                title: String,
-                action: (() -> ())? = nil,
-                section: AssistiveTouchSection? = nil) {
-        self.icon = icon
-        self.title = title
-        self.section = section
-        self.action = action
+    open let assistiveTouchPosition: AssistiveTouchPosition = AssistiveTouchPosition()
+    
+    open func assistiveTouch(_ controller: AssistiveTouchViewController, beganDragFromPosition position: CGPoint) {
+        
     }
-}
-
-open class AssistiveTouchBackItem: AssistiveTouchItem {
     
+    open func assistiveTouch(_ controller: AssistiveTouchViewController, draggingToPosition position: CGPoint) {
+        
+    }
+    
+    open func assistiveTouch(_ controller: AssistiveTouchViewController, didEndDragToPosition position: CGPoint) {
+        
+    }
 }

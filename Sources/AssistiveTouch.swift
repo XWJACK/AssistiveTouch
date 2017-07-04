@@ -24,8 +24,12 @@
 import Foundation
 
 public enum AssistiveTouchStatus {
-    case systole
-    case expansion
+    case shrink
+    case spread
+    
+    static public prefix func !(_ status: AssistiveTouchStatus) -> AssistiveTouchStatus {
+        return status == .shrink ? .spread : .shrink
+    }
 }
 
 public protocol AssistiveTouchItemConvertable {
@@ -37,10 +41,12 @@ open class AssistiveTouch {
     open static let `default`: AssistiveTouch = AssistiveTouch()
     
     open let window: UIWindow = UIWindow(frame: CGRect(origin: .zero, size: CGSize(width: 60, height: 60)))
-    open let controller: AssistiveTouchViewController = AssistiveTouchViewController()
+    open let controller: AssistiveTouchViewController
     open var rootSection: AssistiveTouchSection?
     
-    private init() {
+    public init(controller: AssistiveTouchViewController = AssistiveTouchViewController()) {
+        self.controller = controller
+        
         window.rootViewController = controller
         window.isHidden = true
         window.makeKeyAndVisible()
