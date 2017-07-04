@@ -25,6 +25,7 @@ import UIKit
 
 public protocol AssistiveTouchViewControllerDelegate: class {
 //    func assistiveTouch(_ controller: AssistiveTouchViewController)
+    func viewDidLoad(_ controller: AssistiveTouchViewController)
     func assistiveTouch(_ controller: AssistiveTouchViewController, beganDragFromPosition position: CGPoint)
     func assistiveTouch(_ controller: AssistiveTouchViewController, draggingToPosition position: CGPoint)
     func assistiveTouch(_ controller: AssistiveTouchViewController, didEndDragToPosition position: CGPoint)
@@ -40,7 +41,8 @@ open class AssistiveTouchViewController: UIViewController {
     
     open private(set) var status: AssistiveTouchStatus = .shrink
     
-    open weak var delegate: AssistiveTouchViewControllerDelegate? = nil
+    open var delegate: AssistiveTouchViewControllerDelegate? = nil
+    open weak var window: UIWindow? = nil
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -50,24 +52,37 @@ open class AssistiveTouchViewController: UIViewController {
         
         view.addGestureRecognizer(tapGesture)
         view.addGestureRecognizer(dragGesture)
+        
+//        view.backgroundColor = .red
+        delegate?.viewDidLoad(self)
     }
     
     @objc private func tap(_ gesture: UITapGestureRecognizer) {
         
-        status = !status
+//        status = !status
     }
     
     @objc private func drag(_ gesture: UIPanGestureRecognizer) {
         /// Only useful in shrink status.
-        guard status == .shrink else { return }
+//        guard status == .shrink else { return }
         
         let position = gesture.location(in: view)
-        view.center = position
         
         switch gesture.state {
-        case .began: delegate?.assistiveTouch(self, beganDragFromPosition: position)
+        case .began:
+            
+            window?.frame = UIScreen.main.bounds
+            view.frame = UIScreen.main.bounds
+            
+            delegate?.assistiveTouch(self, beganDragFromPosition: position)
         case .changed: delegate?.assistiveTouch(self, draggingToPosition: position)
-        case .ended, .cancelled, .failed: delegate?.assistiveTouch(self, didEndDragToPosition: position)
+        case .ended, .cancelled, .failed:
+            
+            window?.frame = CGRect(origin: .zero, size: CGSize(width: 60, height: 60))
+            window?.center = position
+            view.frame = CGRect(origin: .zero, size: CGSize(width: 60, height: 60))
+            
+            delegate?.assistiveTouch(self, didEndDragToPosition: position)
         case .possible: break
         }
     }

@@ -41,14 +41,15 @@ open class AssistiveTouch {
     open static let `default`: AssistiveTouch = AssistiveTouch()
     
     open let window: UIWindow = UIWindow(frame: CGRect(origin: .zero, size: CGSize(width: 60, height: 60)))
-    open let controller: AssistiveTouchViewController
     open var rootSection: AssistiveTouchSection?
     
-    public init(controller: AssistiveTouchViewController = AssistiveTouchViewController()) {
-        self.controller = controller
-        
+    public init(controller: AssistiveTouchViewController = AssistiveTouchViewController(),
+                delegate: AssistiveTouchDelegate = AssistiveTouchDelegate()) {
+        window.windowLevel = UIWindowLevelStatusBar + 1
         window.rootViewController = controller
-        window.isHidden = true
+        
+        controller.window = window
+        controller.delegate = delegate
     }
     
     open func show() {

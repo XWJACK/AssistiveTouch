@@ -34,11 +34,12 @@ open class AssistiveTouchView: UIView {
         
         effectiveView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         effectiveView.layer.cornerRadius = 12
+        effectiveView.layer.masksToBounds = true
         addSubview(effectiveView)
         
-        layer.addSublayer(createCircle(center: center, radius: 22, alpha:0.2))
-        layer.addSublayer(createCircle(center: center, radius: 18, alpha:0.5))
-        layer.addSublayer(createCircle(center: center, radius: 14, alpha:0.8))
+        effectiveView.layer.addSublayer(createCircle(center: CGPoint(x: 30, y: 30), radius: 22, alpha:0.2))
+        effectiveView.layer.addSublayer(createCircle(center: CGPoint(x: 30, y: 30), radius: 18, alpha:0.5))
+        effectiveView.layer.addSublayer(createCircle(center: CGPoint(x: 30, y: 30), radius: 14, alpha:0.8))
     }
     
     public override init(frame: CGRect) {
