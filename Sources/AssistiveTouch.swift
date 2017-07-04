@@ -36,27 +36,34 @@ public protocol AssistiveTouchItemConvertable {
     func item() -> AssistiveTouchItem
 }
 
+/// Assistive touch
 open class AssistiveTouch {
     
+    /// Default assistive touch with default `AssistiveTouchViewController`.
     open static let `default`: AssistiveTouch = AssistiveTouch()
     
+    /// Assistive touch window
     open let window: UIWindow
+    
     open var rootSection: AssistiveTouchSection?
     
-    public init(controller: AssistiveTouchViewController = AssistiveTouchViewController()) {
+    public init(controller: AssistiveTouchViewController = AssistiveTouchViewController(),
+                defaultPosition: CGPoint = AssistiveTouchPosition.defaultPosition) {
         
-        window = UIWindow(frame: CGRect(origin: .zero, size: controller.delegate.shrinkSize))
+        window = UIWindow(frame: CGRect(origin: defaultPosition, size: controller.delegate.shrinkSize))
         window.windowLevel = UIWindowLevelStatusBar + 1
         window.rootViewController = controller
         
         controller.window = window
     }
     
+    /// Display assistive touch
     open func show() {
         window.isHidden = false
         window.makeKeyAndVisible()
     }
     
+    /// Hide assistive touch
     open func hide() {
         window.isHidden = true
     }

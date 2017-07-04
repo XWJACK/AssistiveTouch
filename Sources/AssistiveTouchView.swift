@@ -23,13 +23,14 @@
 
 import UIKit
 
-/// Assistive touch view with systole status
+/// Default sssistive touch view whitch same as system.
 open class AssistiveTouchView: UIView {
     
+    /// Background effective view.
     open let effectiveView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
-    public convenience init() {
-        self.init(frame: .zero)
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
         
         backgroundColor = .clear
         
@@ -43,14 +44,17 @@ open class AssistiveTouchView: UIView {
         effectiveView.layer.addSublayer(createCircle(center: CGPoint(x: 30, y: 30), radius: 14, alpha:0.8))
     }
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Create cycyle layer.
+    ///
+    /// - Parameters:
+    ///   - center: Circle center
+    ///   - radius: Circle radius
+    ///   - alpha: Layer alpha
+    /// - Returns: CAShapeLayer
     private func createCircle(center: CGPoint, radius: CGFloat, alpha: CGFloat) -> CAShapeLayer {
         let layer = CAShapeLayer()
         let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0.0, endAngle: CGFloat(2 * Double.pi), clockwise: true)

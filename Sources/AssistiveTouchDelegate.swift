@@ -59,8 +59,11 @@ open class AssistiveTouchDelegate: AssistiveTouchViewControllerDelegate {
     }
     
     open func assistiveTouch(_ controller: AssistiveTouchViewController, didEndDragToPosition position: CGPoint) {
+        
         controller.contentView.alpha = 0.5
-        endPosition = CGPoint(x: position.x - shrinkSize.width / 2, y: position.y - shrinkSize.height / 2)
+        
+        endPosition = CGPoint(x: position.x - shrinkSize.width / 2,
+                              y: position.y - shrinkSize.height / 2)
         
         /// Adsorption to static point.
         UIView.animate(withDuration: 0.3) {
