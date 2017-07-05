@@ -29,6 +29,8 @@ open class AssistiveTouchView: UIView {
     /// Background effective view.
     open let effectiveView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
+    open let shrinkLayer: CALayer = CALayer()
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -39,9 +41,11 @@ open class AssistiveTouchView: UIView {
         effectiveView.layer.masksToBounds = true
         addSubview(effectiveView)
         
-        effectiveView.layer.addSublayer(createCircle(center: CGPoint(x: 30, y: 30), radius: 22, alpha:0.2))
-        effectiveView.layer.addSublayer(createCircle(center: CGPoint(x: 30, y: 30), radius: 18, alpha:0.5))
-        effectiveView.layer.addSublayer(createCircle(center: CGPoint(x: 30, y: 30), radius: 14, alpha:0.8))
+        shrinkLayer.addSublayer(createCircle(center: CGPoint(x: 30, y: 30), radius: 22, alpha:0.2))
+        shrinkLayer.addSublayer(createCircle(center: CGPoint(x: 30, y: 30), radius: 18, alpha:0.5))
+        shrinkLayer.addSublayer(createCircle(center: CGPoint(x: 30, y: 30), radius: 14, alpha:0.8))
+        
+        effectiveView.layer.addSublayer(shrinkLayer)
     }
     
     required public init?(coder aDecoder: NSCoder) {

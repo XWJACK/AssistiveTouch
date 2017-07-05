@@ -30,8 +30,25 @@ public protocol AssistiveTouchViewControllerDelegate: class {
     func shrink(_ controller: AssistiveTouchViewController)
     func spread(_ controller: AssistiveTouchViewController)
     
+    /// Asks for delegate when began drag assistive touch.
+    ///
+    /// - Parameters:
+    ///   - controller: AssistiveTouchViewController.
+    ///   - position: From position.
     func assistiveTouch(_ controller: AssistiveTouchViewController, beganDragFromPosition position: CGPoint)
+    
+    /// Asks for delegate for dragging to position.
+    ///
+    /// - Parameters:
+    ///   - controller: AssistiveTouchViewController.
+    ///   - position: The new position.
     func assistiveTouch(_ controller: AssistiveTouchViewController, draggingToPosition position: CGPoint)
+    
+    /// Asks for delegate for end drag to position.
+    ///
+    /// - Parameters:
+    ///   - controller: AssistiveTouchViewController.
+    ///   - position: End position.
     func assistiveTouch(_ controller: AssistiveTouchViewController, didEndDragToPosition position: CGPoint)
 }
 
@@ -64,7 +81,7 @@ open class AssistiveTouchViewController: UIViewController {
         let dragGesture = UIPanGestureRecognizer(target: self, action: #selector(drag(_:)))
         
         view.addGestureRecognizer(tapGesture)
-        view.addGestureRecognizer(dragGesture)
+        contentView.addGestureRecognizer(dragGesture)
         
         delegate.viewDidLoad(self)
     }
@@ -103,7 +120,7 @@ open class AssistiveTouchViewController: UIViewController {
             delegate.assistiveTouch(self, draggingToPosition: position)
         case .ended, .cancelled, .failed:
             
-            window?.frame = CGRect(origin: .zero, size: delegate.shrinkSize)
+            window?.frame.size = delegate.shrinkSize
             window?.center = position
             contentView.frame.origin = .zero
             

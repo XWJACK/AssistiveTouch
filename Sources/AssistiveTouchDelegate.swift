@@ -30,7 +30,7 @@ open class AssistiveTouchDelegate: AssistiveTouchViewControllerDelegate {
     
     open let assistiveTouchView: AssistiveTouchView = AssistiveTouchView()
     
-    open var endPosition: CGPoint = .zero
+    open var endPosition: CGPoint = AssistiveTouchPosition.defaultPosition
     open var shrinkSize: CGSize { return CGSize(width: 60, height: 60) }
     
     public init(assistiveTouchPosition: AssistiveTouchPosition = AssistiveTouchPosition()) {
@@ -43,11 +43,31 @@ open class AssistiveTouchDelegate: AssistiveTouchViewControllerDelegate {
     }
     
     open func shrink(_ controller: AssistiveTouchViewController) {
+        controller.window?.frame = CGRect(origin: endPosition, size: shrinkSize)
         
+        UIView.animate(withDuration: 0.25) {
+            self.assistiveTouchView.shrinkLayer.opacity = 1
+            self.assistiveTouchView.frame.size = self.shrinkSize
+            self.assistiveTouchView.effectiveView.frame.size = self.shrinkSize
+            controller.contentView.frame = CGRect(origin: .zero, size: self.shrinkSize)
+        }
     }
     
     open func spread(_ controller: AssistiveTouchViewController) {
+        controller.contentView.alpha = 1
+        controller.window?.frame = UIScreen.main.bounds
+        controller.contentView.frame.origin = endPosition
         
+        UIView.animate(withDuration: 0.25) {
+            self.assistiveTouchView.shrinkLayer.opacity = 0
+            let frame = CGRect(x: (UIScreen.main.bounds.width - 300) / 2,
+                               y: (UIScreen.main.bounds.height - 300) / 2,
+                               width: 300,
+                               height: 300)
+            controller.contentView.frame = frame
+            self.assistiveTouchView.frame.size = frame.size
+            self.assistiveTouchView.effectiveView.frame.size = frame.size
+        }
     }
     
     open func assistiveTouch(_ controller: AssistiveTouchViewController, beganDragFromPosition position: CGPoint) {

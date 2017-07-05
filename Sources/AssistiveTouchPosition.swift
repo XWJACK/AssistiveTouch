@@ -23,11 +23,19 @@
 
 import UIKit
 
+/// Define position action for assistive touch.
 open class AssistiveTouchPosition {
     
+    /// Default position for first display assistive touch.
     open static var defaultPosition: CGPoint { return CGPoint(x: 2, y: 2) }
     
-    open func adsorption(currentFrame current: CGRect, inSize size: CGSize, minX: CGFloat = 2, minY: CGFloat = 2, adsorptionX: CGFloat = 60, adsorptionY: CGFloat = 60) -> CGPoint {
+    /// Adsorption rule.
+    open func adsorption(currentFrame current: CGRect,
+                         inSize size: CGSize,
+                         minX: CGFloat = 2,
+                         minY: CGFloat = 2,
+                         adsorptionX: CGFloat = 60,
+                         adsorptionY: CGFloat = 60) -> CGPoint {
         
         var adsorptionPoint: CGPoint = .zero
         
