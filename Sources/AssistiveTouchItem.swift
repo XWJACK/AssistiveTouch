@@ -23,17 +23,31 @@
 
 import UIKit
 
+/// Confirm this protocol to convert any type to AssistiveTouchItem
+public protocol AssistiveTouchItemConvertable {
+    func item() -> AssistiveTouchItem
+}
+
+/// Assistive touch item.
 open class AssistiveTouchItem {
-    open let icon: AssistiveTouchIcon
-    open let title: String
+    public typealias Identifier = Int
+    
+    /// Identifer for each item, only union in one section.
+    open let identifier: Int
+    open let icon: UIImage?
+    open let title: String?
+    
+    /// Action for Item.
     open var action: (() -> ())?
     /// Associate section
     open let section: AssistiveTouchSection?
     
-    public init(icon: AssistiveTouchIcon,
-                title: String,
+    public init(identifier: Identifier,
+                icon: UIImage? = nil,
+                title: String? = nil,
                 action: (() -> ())? = nil,
                 section: AssistiveTouchSection? = nil) {
+        self.identifier = identifier
         self.icon = icon
         self.title = title
         self.section = section

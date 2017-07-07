@@ -26,19 +26,30 @@ import Foundation
 /// Layout for assistive touch section view.
 ///
 /// -------------
-/// | 1 | 2 | 3 |
+/// | 0 | 1 | 2 |
 /// -------------
-/// | 4 | 5 | 6 |
+/// | 3 | 4 | 5 |
 /// -------------
-/// | 7 | 8 | 9 |
+/// | 6 | 7 | 8 |
 /// -------------
 ///
 open class AssistiveTouchLayout {
     
-    public var layoutSize: CGSize = CGSize(width: 300, height: 300)
-    open let numberOfItems: Int
+    public var layoutSize: CGSize { return CGSize(width: 300, height: 300) }
+    public var itemSize: CGSize { return CGSize(width: 60, height: 60) }
     
-    public init(_ numberOfItems: Int) {
+    open let numberOfItems: Int
+    open let totalItems: Int
+    
+    public init(_ numberOfItems: Int,
+                totalItems: Int = 9) {
         self.numberOfItems = numberOfItems
+        self.totalItems = totalItems
+    }
+    
+    open func frame(forIdentifier identifer: AssistiveTouchItem.Identifier) -> CGRect {
+        return CGRect(origin: CGPoint(x: CGFloat(identifer % 3) * 90 + 30,
+                                      y: CGFloat(identifer / 3) * 90 + 30),
+                      size: itemSize)
     }
 }

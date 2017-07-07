@@ -1,5 +1,5 @@
 //
-//  AssistiveTouchSectionView.swift
+//  AssistiveTouchItemView.swift
 //
 //  Copyright (c) 2017 Jack
 //
@@ -23,6 +23,13 @@
 
 import UIKit
 
-open class AssistiveTouchSectionView: AssistiveTouchView {
+open class AssistiveTouchItemView: UIControl {
     
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

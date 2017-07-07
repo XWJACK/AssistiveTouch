@@ -33,13 +33,18 @@ open class AssistiveTouchSection {
     open let layout: AssistiveTouchLayout
     
     /// All sub items except backItem.
-    open private(set) var items: [AssistiveTouchItem] = []
+    open private(set) var items: [AssistiveTouchItem.Identifier: AssistiveTouchItem] = [:]
     
     public init(backItem: AssistiveTouchItem? = nil,
                 items: [AssistiveTouchItem],
                 layout: AssistiveTouchLayout? = nil) {
         self.backItem = backItem
-        self.items = items
         self.layout = layout == nil ? AssistiveTouchLayout(items.count) : layout!
+        items.forEach{ self.items[$0.identifier] = $0 }
+    }
+    
+    func rootSection() -> AssistiveTouchSection {
+        guard backItem != nil, let section = backItem?.section else { return self }
+        return section.rootSection()
     }
 }

@@ -23,11 +23,25 @@
 
 import UIKit
 
+/// Confirm this delegate to custom views and actions.
 public protocol AssistiveTouchViewControllerDelegate: class {
+    
+    /// Size for shrink status.
     var shrinkSize: CGSize { get }
+    
+    /// Asks for delegate when AssistiveTouchViewController viewDidLoad.
+    ///
+    /// - Parameter controller: AssistiveTouchViewController
     func viewDidLoad(_ controller: AssistiveTouchViewController)
     
+    /// Asks for delegate to shrink
+    ///
+    /// - Parameter controller: AssistiveTouchViewController
     func shrink(_ controller: AssistiveTouchViewController)
+    
+    /// Asks for delegate to spread
+    ///
+    /// - Parameter controller: AssistiveTouchViewController
     func spread(_ controller: AssistiveTouchViewController)
     
     /// Asks for delegate when began drag assistive touch.
@@ -53,6 +67,8 @@ public protocol AssistiveTouchViewControllerDelegate: class {
 }
 
 public extension AssistiveTouchViewControllerDelegate {
+    func shrink(_ controller: AssistiveTouchViewController) {}
+    func spread(_ controller: AssistiveTouchViewController) {}
     func assistiveTouch(_ controller: AssistiveTouchViewController, beganDragFromPosition position: CGPoint) {}
     func assistiveTouch(_ controller: AssistiveTouchViewController, draggingToPosition position: CGPoint) {}
     func assistiveTouch(_ controller: AssistiveTouchViewController, didEndDragToPosition position: CGPoint) {}
@@ -65,6 +81,9 @@ open class AssistiveTouchViewController: UIViewController {
     /// AssistiveTouchViewController will retain delegate until AssistiveTouchViewController deinit.
     open var delegate: AssistiveTouchViewControllerDelegate = AssistiveTouchDelegate()
     
+    /// Root section for assistive touch.
+    open internal(set) var rootSection: AssistiveTouchSection = AssistiveTouchSection(items: [])
+    
     /// AssistiveTouch key windown.
     open weak var window: UIWindow? = nil
     
@@ -74,12 +93,14 @@ open class AssistiveTouchViewController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .clear
+        
         contentView.frame.size = delegate.shrinkSize
+        contentView.backgroundColor = .clear
         view.addSubview(contentView)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(_ :)))
         let dragGesture = UIPanGestureRecognizer(target: self, action: #selector(drag(_:)))
-        
         view.addGestureRecognizer(tapGesture)
         contentView.addGestureRecognizer(dragGesture)
         

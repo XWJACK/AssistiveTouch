@@ -32,10 +32,6 @@ public enum AssistiveTouchStatus {
     }
 }
 
-public protocol AssistiveTouchItemConvertable {
-    func item() -> AssistiveTouchItem
-}
-
 /// Assistive touch
 open class AssistiveTouch {
     
@@ -45,16 +41,25 @@ open class AssistiveTouch {
     /// Assistive touch window
     open let window: UIWindow
     
-    open var rootSection: AssistiveTouchSection?
-    
     public init(controller: AssistiveTouchViewController = AssistiveTouchViewController(),
                 defaultPosition: CGPoint = AssistiveTouchPosition.defaultPosition) {
         
-        window = UIWindow(frame: CGRect(origin: defaultPosition, size: controller.delegate.shrinkSize))
+        window = UIWindow(frame: CGRect(origin: defaultPosition,
+                                        size: controller.delegate.shrinkSize))
+        window.backgroundColor = .clear
         window.windowLevel = UIWindowLevelStatusBar + 1
         window.rootViewController = controller
         
         controller.window = window
+    }
+    
+    /// This config need config only once.
+    ///
+    /// - Parameter section: AssistiveTouchSection.
+    /// - Returns: AssistiveTouch
+    open func config(withSection section: AssistiveTouchSection) -> Self {
+        (window.rootViewController as! AssistiveTouchViewController).rootSection = section
+        return self
     }
     
     /// Display assistive touch
