@@ -23,7 +23,7 @@
 
 import UIKit
 
-/// Default sssistive touch view whitch same as system.
+/// Default assistive touch view whitch same as system.
 open class AssistiveTouchView: UIView {
     
     /// Background effective view.

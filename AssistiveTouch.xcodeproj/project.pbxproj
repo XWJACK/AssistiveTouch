@@ -51,6 +51,15 @@
 			isa = PBXGroup;
 			children = (
 				04CF61E71F0A0AFD0068FB67 /* AssistiveTouch.swift */,
+				04CF61F11F0A177B0068FB67 /* AssistiveTouchViewController.swift */,
+				04CF61FF1F0B480F0068FB67 /* AssistiveTouchDelegate.swift */,
+				04CF61FD1F0B38910068FB67 /* AssistiveTouchPosition.swift */,
+				04CF61F61F0A26A20068FB67 /* AssistiveTouchView.swift */,
+				04CF61FA1F0A31300068FB67 /* AssistiveTouchSectionView.swift */,
+				04CF61EF1F0A12DA0068FB67 /* AssistiveTouchIcon.swift */,
+				04CF61E91F0A0D930068FB67 /* AssistiveTouchItem.swift */,
+				04CF61EB1F0A10600068FB67 /* AssistiveTouchSection.swift */,
+				04CF61F31F0A1B0F0068FB67 /* AssistiveTouchLayout.swift */,
 				04CF61D51F0A08410068FB67 /* AssistiveTouch */,
 				04CF61D41F0A08410068FB67 /* Products */,
 			);
@@ -67,8 +76,6 @@
 		04CF61D51F0A08410068FB67 /* AssistiveTouch */ = {
 			isa = PBXGroup;
 			children = (
-				04CF61FC1F0A3FC70068FB67 /* Core */,
-				04CF61F51F0A26760068FB67 /* Features */,
 				04CF61E21F0A09500068FB67 /* Supporting Files */,
 			);
 			path = AssistiveTouch;
@@ -81,29 +88,6 @@
 				04CF61E41F0A09740068FB67 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		04CF61F51F0A26760068FB67 /* Features */ = {
-			isa = PBXGroup;
-			children = (
-				04CF61F61F0A26A20068FB67 /* AssistiveTouchView.swift */,
-				04CF61FA1F0A31300068FB67 /* AssistiveTouchSectionView.swift */,
-				04CF61F11F0A177B0068FB67 /* AssistiveTouchViewController.swift */,
-				04CF61FF1F0B480F0068FB67 /* AssistiveTouchDelegate.swift */,
-			);
-			name = Features;
-			sourceTree = "<group>";
-		};
-		04CF61FC1F0A3FC70068FB67 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				04CF61EF1F0A12DA0068FB67 /* AssistiveTouchIcon.swift */,
-				04CF61E91F0A0D930068FB67 /* AssistiveTouchItem.swift */,
-				04CF61EB1F0A10600068FB67 /* AssistiveTouchSection.swift */,
-				04CF61F31F0A1B0F0068FB67 /* AssistiveTouchLayout.swift */,
-				04CF61FD1F0B38910068FB67 /* AssistiveTouchPosition.swift */,
-			);
-			name = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
