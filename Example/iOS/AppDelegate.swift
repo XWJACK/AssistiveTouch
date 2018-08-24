@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AssistiveTouch
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,10 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        AssistiveTouch.default.config(withSection: AssistiveTouchSection(items: [AssistiveTouchItem(identifier: 0, icon: #imageLiteral(resourceName: "item0"), action: nil, section: nil),
-                                                                                 AssistiveTouchItem(identifier: 2, icon: #imageLiteral(resourceName: "item2"), action: nil, section: nil),
-                                                                                 AssistiveTouchItem(identifier: 7, icon: #imageLiteral(resourceName: "item7"), action: nil, section: nil)])).show()
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = ViewController()
+        window?.makeKeyAndVisible()
         return true
     }
 

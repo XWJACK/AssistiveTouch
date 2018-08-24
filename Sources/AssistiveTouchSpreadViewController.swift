@@ -1,5 +1,5 @@
 //
-//  AssistiveTouchItemView.swift
+//  AssistiveTouchSpreadViewController.swift
 //
 //  Copyright (c) 2017 Jack
 //
@@ -21,15 +21,29 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import UIKit
+import Foundation
 
-open class AssistiveTouchItemView: UIControl {
+/// Spread view controller
+open class AssistiveTouchSpreadViewController: AssistiveTouchViewController {
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        configAsRoot()
     }
     
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @discardableResult
+    @objc public override func shrink() -> Bool {
+        guard super.shrink() else { return false }
+        dismiss()
+        return true
+    }
+    
+    open func dismiss() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    open func configAsRoot() {
+        title = "Assistive Touch"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(shrink))
     }
 }

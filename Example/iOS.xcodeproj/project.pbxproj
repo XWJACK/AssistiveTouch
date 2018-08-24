@@ -7,31 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		048E7A281F0B567A00967DFD /* AssistiveTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CF62241F0B54BC0068FB67 /* AssistiveTouch.framework */; };
-		048E7A291F0B567A00967DFD /* AssistiveTouch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04CF62241F0B54BC0068FB67 /* AssistiveTouch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04CF620E1F0B54890068FB67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF620D1F0B54890068FB67 /* AppDelegate.swift */; };
 		04CF62101F0B54890068FB67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF620F1F0B54890068FB67 /* ViewController.swift */; };
 		04CF62131F0B54890068FB67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CF62111F0B54890068FB67 /* Main.storyboard */; };
 		04CF62151F0B54890068FB67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CF62141F0B54890068FB67 /* Assets.xcassets */; };
 		04CF62181F0B54890068FB67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CF62161F0B54890068FB67 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		048E7A2A1F0B567A00967DFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04CF621F1F0B54BB0068FB67 /* AssistiveTouch.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 04CF61D21F0A08410068FB67;
-			remoteInfo = AssistiveTouch;
-		};
-		04CF62231F0B54BC0068FB67 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04CF621F1F0B54BB0068FB67 /* AssistiveTouch.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 04CF61D31F0A08410068FB67;
-			remoteInfo = AssistiveTouch;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		048E7A2C1F0B567A00967DFD /* Embed Frameworks */ = {
@@ -40,7 +21,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				048E7A291F0B567A00967DFD /* AssistiveTouch.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,7 +35,6 @@
 		04CF62141F0B54890068FB67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04CF62171F0B54890068FB67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04CF62191F0B54890068FB67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04CF621F1F0B54BB0068FB67 /* AssistiveTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AssistiveTouch.xcodeproj; path = ../../AssistiveTouch.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +42,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				048E7A281F0B567A00967DFD /* AssistiveTouch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +62,6 @@
 		04CF62011F0B54890068FB67 = {
 			isa = PBXGroup;
 			children = (
-				04CF621F1F0B54BB0068FB67 /* AssistiveTouch.xcodeproj */,
 				04CF620C1F0B54890068FB67 /* iOS */,
 				04CF620B1F0B54890068FB67 /* Products */,
 			);
@@ -108,14 +85,6 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
-		04CF62201F0B54BB0068FB67 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				04CF62241F0B54BC0068FB67 /* AssistiveTouch.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,7 +100,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				048E7A2B1F0B567A00967DFD /* PBXTargetDependency */,
 			);
 			name = iOS;
 			productName = iOS;
@@ -166,28 +134,12 @@
 			mainGroup = 04CF62011F0B54890068FB67;
 			productRefGroup = 04CF620B1F0B54890068FB67 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 04CF62201F0B54BB0068FB67 /* Products */;
-					ProjectRef = 04CF621F1F0B54BB0068FB67 /* AssistiveTouch.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				04CF62091F0B54890068FB67 /* iOS */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		04CF62241F0B54BC0068FB67 /* AssistiveTouch.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AssistiveTouch.framework;
-			remoteRef = 04CF62231F0B54BC0068FB67 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		04CF62081F0B54890068FB67 /* Resources */ = {
@@ -213,14 +165,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		048E7A2B1F0B567A00967DFD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AssistiveTouch;
-			targetProxy = 048E7A2A1F0B567A00967DFD /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		04CF62111F0B54890068FB67 /* Main.storyboard */ = {

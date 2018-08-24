@@ -41,25 +41,31 @@ open class AssistiveTouch {
     /// Assistive touch window
     open let window: UIWindow
     
-    public init(controller: AssistiveTouchViewController = AssistiveTouchViewController(),
-                defaultPosition: CGPoint = AssistiveTouchPosition.defaultPosition) {
-        
-        window = UIWindow(frame: CGRect(origin: defaultPosition,
-                                        size: controller.delegate.shrinkSize))
-        window.backgroundColor = .clear
-        window.windowLevel = UIWindowLevelStatusBar + 1
-        window.rootViewController = controller
-        
-        controller.window = window
-    }
+    /// Current assistive touch status.
+    open internal(set) var status: AssistiveTouchStatus = .shrink
     
-    /// This config need config only once.
-    ///
-    /// - Parameter section: AssistiveTouchSection.
-    /// - Returns: AssistiveTouch
-    open func config(withSection section: AssistiveTouchSection) -> Self {
-        (window.rootViewController as! AssistiveTouchViewController).rootSection = section
-        return self
+    /// ShrinkViewController
+    open let shrinkViewController: AssistiveTouchViewController
+    /// Spread view controller
+    open let spreadViewController: AssistiveTouchSpreadViewController
+    
+    public init(shrinkViewController: AssistiveTouchViewController = AssistiveTouchShrinkViewController<AssistiveTouchNormalShrinkView, AssistiveTouchAbstractShrinkRule>(),
+                spreadViewController: AssistiveTouchSpreadViewController = AssistiveTouchSpreadViewController(),
+                inWindow window: UIWindow = {
+                    /// Init with default window
+                    let window = UIWindow(frame: UIScreen.main.bounds)
+                    window.backgroundColor = .clear
+                    window.windowLevel = UIWindowLevelStatusBar + 1
+                    return window
+                }()) {
+        self.window = window
+        self.shrinkViewController = shrinkViewController
+        self.spreadViewController = spreadViewController
+        
+        shrinkViewController.assistiveTouch = self
+        spreadViewController.assistiveTouch = self
+        
+        window.rootViewController = shrinkViewController
     }
     
     /// Display assistive touch

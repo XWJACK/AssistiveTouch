@@ -23,130 +23,41 @@
 
 import UIKit
 
-/// Confirm this delegate to custom views and actions.
-public protocol AssistiveTouchViewControllerDelegate: class {
-    
-    /// Size for shrink status.
-    var shrinkSize: CGSize { get }
-    
-    /// Asks for delegate when AssistiveTouchViewController viewDidLoad.
-    ///
-    /// - Parameter controller: AssistiveTouchViewController
-    func viewDidLoad(_ controller: AssistiveTouchViewController)
-    
-    /// Asks for delegate to shrink
-    ///
-    /// - Parameter controller: AssistiveTouchViewController
-    func shrink(_ controller: AssistiveTouchViewController)
-    
-    /// Asks for delegate to spread
-    ///
-    /// - Parameter controller: AssistiveTouchViewController
-    func spread(_ controller: AssistiveTouchViewController)
-    
-    /// Asks for delegate when began drag assistive touch.
-    ///
-    /// - Parameters:
-    ///   - controller: AssistiveTouchViewController.
-    ///   - position: From position.
-    func assistiveTouch(_ controller: AssistiveTouchViewController, beganDragFromPosition position: CGPoint)
-    
-    /// Asks for delegate for dragging to position.
-    ///
-    /// - Parameters:
-    ///   - controller: AssistiveTouchViewController.
-    ///   - position: The new position.
-    func assistiveTouch(_ controller: AssistiveTouchViewController, draggingToPosition position: CGPoint)
-    
-    /// Asks for delegate for end drag to position.
-    ///
-    /// - Parameters:
-    ///   - controller: AssistiveTouchViewController.
-    ///   - position: End position.
-    func assistiveTouch(_ controller: AssistiveTouchViewController, didEndDragToPosition position: CGPoint)
-}
-
-public extension AssistiveTouchViewControllerDelegate {
-    func shrink(_ controller: AssistiveTouchViewController) {}
-    func spread(_ controller: AssistiveTouchViewController) {}
-    func assistiveTouch(_ controller: AssistiveTouchViewController, beganDragFromPosition position: CGPoint) {}
-    func assistiveTouch(_ controller: AssistiveTouchViewController, draggingToPosition position: CGPoint) {}
-    func assistiveTouch(_ controller: AssistiveTouchViewController, didEndDragToPosition position: CGPoint) {}
-}
-
+/// Base assistive touch view controller
 open class AssistiveTouchViewController: UIViewController {
     
-    open private(set) var status: AssistiveTouchStatus = .shrink
+    /// Same as AssistiveTouch status
+    public final private(set) var status: AssistiveTouchStatus {
+        get {
+            return assistiveTouch?.status ?? .shrink
+        } set {
+            assistiveTouch?.status = newValue
+        }
+    }
     
-    /// AssistiveTouchViewController will retain delegate until AssistiveTouchViewController deinit.
-    open var delegate: AssistiveTouchViewControllerDelegate = AssistiveTouchDelegate()
+    /// Same as AssistiveTouch window
+    public final var window: UIWindow? { return assistiveTouch?.window }
     
-    /// Root section for assistive touch.
-    open internal(set) var rootSection: AssistiveTouchSection = AssistiveTouchSection(items: [])
+    /// AssistiveTouch
+    open weak var assistiveTouch: AssistiveTouch?
     
-    /// AssistiveTouch key windown.
-    open weak var window: UIWindow? = nil
-    
-    /// Sub view need to `addSubview` into `contentView` instead of `view`.
-    open let contentView: UIView = UIView()
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .clear
-        
-        contentView.frame.size = delegate.shrinkSize
-        contentView.backgroundColor = .clear
-        view.addSubview(contentView)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(_ :)))
-        let dragGesture = UIPanGestureRecognizer(target: self, action: #selector(drag(_:)))
-        view.addGestureRecognizer(tapGesture)
-        contentView.addGestureRecognizer(dragGesture)
-        
-        delegate.viewDidLoad(self)
+        view.backgroundColor = .white
     }
     
-    open func shrink() {
-        status = !status
-        delegate.shrink(self)
+    @discardableResult
+    public func shrink() -> Bool {
+        guard status == .spread else { return false }
+        status = .shrink
+        return true
     }
     
-    open func spread() {
-        status = !status
-        delegate.spread(self)
-    }
-    
-    @objc private func tap(_ gesture: UITapGestureRecognizer) {
-        status == .shrink ? spread() : shrink()
-    }
-    
-    @objc private func drag(_ gesture: UIPanGestureRecognizer) {
-        /// Only useful in shrink status.
-        guard status == .shrink else { return }
-        
-        window?.frame = UIScreen.main.bounds
-        let position = gesture.location(in: nil)
-        
-        switch gesture.state {
-        case .began:
-            
-            contentView.center = position
-            
-            delegate.assistiveTouch(self, beganDragFromPosition: position)
-        case .changed:
-            
-            contentView.center = position
-            
-            delegate.assistiveTouch(self, draggingToPosition: position)
-        case .ended, .cancelled, .failed:
-            
-            window?.frame.size = delegate.shrinkSize
-            window?.center = position
-            contentView.frame.origin = .zero
-            
-            delegate.assistiveTouch(self, didEndDragToPosition: position)
-        case .possible: break
-        }
+    @discardableResult
+    public func spread() -> Bool {
+        guard status == .shrink else { return false }
+        status = .spread
+        return true
     }
 }

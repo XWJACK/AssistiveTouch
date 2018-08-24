@@ -1,5 +1,5 @@
 //
-//  AssistiveTouchItem.swift
+//  AssistiveTouch.h
 //
 //  Copyright (c) 2017 Jack
 //
@@ -21,40 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import UIKit
+#import <UIKit/UIKit.h>
 
-/// Confirm this protocol to convert any type to AssistiveTouchItem
-public protocol AssistiveTouchItemConvertable {
-    func item() -> AssistiveTouchItem
-}
-
-/// Assistive touch item.
-open class AssistiveTouchItem {
-    public typealias Identifier = Int
-    
-    /// Identifer for each item, only union in one section.
-    open let identifier: Int
-    open let icon: UIImage?
-    open let title: String?
-    
-    /// Action for Item.
-    open var action: (() -> ())?
-    /// Associate section
-    open let section: AssistiveTouchSection?
-    
-    public init(identifier: Identifier,
-                icon: UIImage? = nil,
-                title: String? = nil,
-                action: (() -> ())? = nil,
-                section: AssistiveTouchSection? = nil) {
-        self.identifier = identifier
-        self.icon = icon
-        self.title = title
-        self.section = section
-        self.action = action
-    }
-}
-
-open class AssistiveTouchBackItem: AssistiveTouchItem {
-    
-}
+FOUNDATION_EXPORT double AssistiveTouchVersionNumber;
+FOUNDATION_EXPORT const unsigned char AssistiveTouchVersionString[];
