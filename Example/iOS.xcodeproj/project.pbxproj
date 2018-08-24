@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04445BC82130470900B6F983 /* AlertTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04445BC62130470900B6F983 /* AlertTransition.framework */; };
+		04445BC92130470900B6F983 /* AssistiveTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04445BC72130470900B6F983 /* AssistiveTouch.framework */; };
 		04CF620E1F0B54890068FB67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF620D1F0B54890068FB67 /* AppDelegate.swift */; };
 		04CF62101F0B54890068FB67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF620F1F0B54890068FB67 /* ViewController.swift */; };
 		04CF62131F0B54890068FB67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CF62111F0B54890068FB67 /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04445BC62130470900B6F983 /* AlertTransition.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlertTransition.framework; path = Carthage/Build/iOS/AlertTransition.framework; sourceTree = "<group>"; };
+		04445BC72130470900B6F983 /* AssistiveTouch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssistiveTouch.framework; path = Carthage/Build/iOS/AssistiveTouch.framework; sourceTree = "<group>"; };
 		04CF620A1F0B54890068FB67 /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CF620D1F0B54890068FB67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04CF620F1F0B54890068FB67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,12 +46,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04445BC82130470900B6F983 /* AlertTransition.framework in Frameworks */,
+				04445BC92130470900B6F983 /* AssistiveTouch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04445BC32130468900B6F983 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04445BC62130470900B6F983 /* AlertTransition.framework */,
+				04445BC72130470900B6F983 /* AssistiveTouch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		048E7A2D1F0B57F000967DFD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +79,7 @@
 			children = (
 				04CF620C1F0B54890068FB67 /* iOS */,
 				04CF620B1F0B54890068FB67 /* Products */,
+				04445BC32130468900B6F983 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +112,7 @@
 				04CF62071F0B54890068FB67 /* Frameworks */,
 				04CF62081F0B54890068FB67 /* Resources */,
 				048E7A2C1F0B567A00967DFD /* Embed Frameworks */,
+				04445BC22130465300B6F983 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -153,6 +170,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04445BC22130465300B6F983 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/AssistiveTouch.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlertTransition.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AssistiveTouch.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlertTransition.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		04CF62061F0B54890068FB67 /* Sources */ = {
@@ -287,6 +324,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AWFM3K5AG4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xwjack.test;
@@ -301,6 +342,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AWFM3K5AG4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xwjack.test;
